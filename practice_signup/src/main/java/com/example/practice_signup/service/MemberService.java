@@ -1,6 +1,8 @@
 package com.example.practice_signup.service;
 
+import com.example.practice_signup.dto.JoinRequest;
+
 public interface MemberService {
     
-    String join(String id, String name, String phoneNumber);
+    String join(JoinRequest joinRequest);
 }

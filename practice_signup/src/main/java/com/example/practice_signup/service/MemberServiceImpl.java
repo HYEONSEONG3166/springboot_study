@@ -2,6 +2,7 @@ package com.example.practice_signup.service;
 
 import org.springframework.stereotype.Service;
 
+import com.example.practice_signup.dto.JoinRequest;
 import com.example.practice_signup.entity.Member;
 import com.example.practice_signup.repository.MemberRepository;
 
@@ -15,15 +16,15 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public String join(String id, String name, String phoneNumber) {
+    public String join(JoinRequest joinRequest) {
         Member member = Member.builder()
-                .id(id)
-                .name(name)
-                .phoneNumber(phoneNumber)
+                .id(joinRequest.getId())
+                .name(joinRequest.getName())
+                .phoneNumber(joinRequest.getPhoneNumber())
                 .build();
-        
+
         memberRepository.save(member);
-        return "Member registered successfully: " + id;
+        return "Member registered successfully: " + joinRequest.getId();
     }
-    
+
 }

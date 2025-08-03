@@ -24,16 +24,13 @@ public class MemberController {
 
     @PostMapping("/join")
     public String join(@RequestBody JoinRequest joinRequest) {
-        String id = joinRequest.getId();
-        String name = joinRequest.getName();
-        String phoneNumber = joinRequest.getPhoneNumber();
 
-        String result = memberService.join(id, name, phoneNumber);
+        String result = memberService.join(joinRequest);
 
-        if(result.equalsIgnoreCase(result)) {
-            return "Member registered successfully: " + id;
+        if (result.equalsIgnoreCase(result)) {
+            return "Member registered successfully: " + joinRequest.getId();
         } else {
-            return "Registration failed for member: " + id;
+            return "Registration failed for member: " + joinRequest.getId();
         }
 
     }
